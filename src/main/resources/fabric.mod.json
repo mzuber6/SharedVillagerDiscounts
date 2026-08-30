@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "sharedvillagerdiscounts",
+  "version": "${version}",
+  "name": "SharedVillagerDiscounts",
+  "description": "Shares villager discounts between players, with optional cure-only behavior.",
+  "authors": [
+    "mzuber"
+  ],
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.github.mzuber.sharedvillagerdiscounts.SharedVillagerDiscountsMod"
+    ],
+    "client": [
+      "io.github.mzuber.sharedvillagerdiscounts.SharedVillagerDiscountsClient"
+    ],
+    "modmenu": [
+      "io.github.mzuber.sharedvillagerdiscounts.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "shared-villager-discounts.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "minecraft": "~${minecraft_version}",
+    "java": ">=25",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "modmenu": "*"
+  },
+  "contact": {
+    "issues": "https://github.com/mzuber"
+  }
+}
