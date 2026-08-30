@@ -39,7 +39,6 @@ public final class SharedVillagerDiscountsConfigScreen extends Screen {
     @Override
     public void extractRenderState(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTick) {
         super.extractRenderState(guiGraphics, mouseX, mouseY, partialTick);
-        extractBackground(guiGraphics, mouseX, mouseY, partialTick);
         guiGraphics.centeredText(font, title, width / 2, 32, 0xFFFFFF);
         guiGraphics.centeredText(font, "Default: share all existing villager discounts", width / 2, 56, 0xA0A0A0);
         guiGraphics.centeredText(font, "Dedicated servers still use the server config file.", width / 2, 68, 0xA0A0A0);

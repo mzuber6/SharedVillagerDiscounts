@@ -2,8 +2,9 @@ package io.github.mzuber.sharedvillagerdiscounts.mixin;
 
 import io.github.mzuber.sharedvillagerdiscounts.DiscountSnapshot;
 import io.github.mzuber.sharedvillagerdiscounts.VillagerDiscountAccess;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.npc.villager.Villager;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -27,7 +28,7 @@ public abstract class VillagerMixin implements VillagerDiscountAccess {
     private int ovd$storedMinorPositive;
 
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
-    private void ovd$writeDiscountData(CompoundTag tag, CallbackInfo ci) {
+    private void ovd$writeDiscountData(ValueOutput tag, CallbackInfo ci) {
         if (!ovd$hasStoredCureDiscount) {
             return;
         }
@@ -38,7 +39,7 @@ public abstract class VillagerMixin implements VillagerDiscountAccess {
     }
 
     @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
-    private void ovd$readDiscountData(CompoundTag tag, CallbackInfo ci) {
+    private void ovd$readDiscountData(ValueInput tag, CallbackInfo ci) {
         ovd$hasStoredCureDiscount = tag.getBooleanOr(OVD_MARKER_KEY, false);
         ovd$storedMajorPositive = tag.getIntOr(OVD_MAJOR_KEY, 0);
         ovd$storedMinorPositive = tag.getIntOr(OVD_MINOR_KEY, 0);
